@@ -26,6 +26,7 @@ describe("causality engine", () => {
       "device:102",
       "device:132",
       "device:141",
+      "device:160",
       "signal:sig-isp-bremen",
     ]);
   });
@@ -43,6 +44,20 @@ describe("causality engine", () => {
     expect(incident.suppressedAlertUids.length).toBeGreaterThanOrEqual(9);
     expect(incident.deviceIds).toContain(120);
     expect(incident.deviceIds).toContain(127);
+  });
+
+  test("switch outage suppresses downstream devices and protects the switch", () => {
+    const result = analyzeCausality(baseInput);
+    expect(result.suppressions["a-dui-grid1-offline"]?.ruleId).toBe("switch-down");
+    expect(result.suppressions["a-dui-grid2-offline"]?.ruleId).toBe("switch-down");
+    expect(result.suppressions["a-dui-wks-offline"]?.ruleId).toBe("switch-down");
+    expect(result.suppressions["a-dui-grid-ping"]?.ruleId).toBe("switch-down");
+    expect(result.suppressions["a-dui-sw"]).toBeUndefined();
+
+    const incident = result.incidents.find((entry) => entry.id === "device:160")!;
+    expect(incident.kind).toBe("switch");
+    expect(incident.rootCauseAlertUid).toBe("a-dui-sw");
+    expect(incident.suppressedAlertUids).toContain("a-dui-grid1-offline");
   });
 
   test("host offline suppresses VM symptoms via parent topology", () => {

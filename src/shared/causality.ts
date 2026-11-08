@@ -260,7 +260,7 @@ export function analyzeCausality(input: CausalityInput): CausalityResult {
   const addRootDevice = (device: Device, incident: Incident) => {
     rootDeviceIds.add(device.id);
     rootDeviceIncident.set(device.id, incident.id);
-    incident.deviceIds.push(device.id);
+    if (!incident.deviceIds.includes(device.id)) incident.deviceIds.push(device.id);
     const rootAlert = pickRootAlert(input.alerts, device.id);
     if (rootAlert) {
       rootAlertUids.add(rootAlert.uid);
