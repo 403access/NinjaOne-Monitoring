@@ -138,7 +138,7 @@ export function CausalGraph({
           <i className="legend-dot legend-dot--root" /> Root Cause
         </span>
         <span>
-          <i className="legend-dot legend-dot--device" /> betroffenes Gerät
+          <i className="legend-dot legend-dot--device" /> betroffenes Gerät / Symptom
         </span>
         <span>
           <i className="legend-dot legend-dot--symptom" /> Symptom-Alarme

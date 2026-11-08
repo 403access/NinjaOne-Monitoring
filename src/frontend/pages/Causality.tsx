@@ -419,11 +419,11 @@ export function Causality() {
         </div>
         <div className="causality-stat causality-stat--confidence">
           <div>
-            <strong>{Math.round((1 - causality.stats.suppressedAlerts / Math.max(1, causality.stats.totalAlerts)) * 100)} %</strong>
+            <strong>{Math.round((causality.stats.suppressedAlerts / Math.max(1, causality.stats.totalAlerts)) * 100)} %</strong>
             <span>Signal-Reduktion</span>
           </div>
           <Progress
-            value={(1 - causality.stats.suppressedAlerts / Math.max(1, causality.stats.totalAlerts)) * 100}
+            value={(causality.stats.suppressedAlerts / Math.max(1, causality.stats.totalAlerts)) * 100}
             tone="violet"
           />
         </div>

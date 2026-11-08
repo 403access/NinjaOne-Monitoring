@@ -249,6 +249,10 @@ export function Alerts() {
   }, [searchParams]);
 
   useEffect(() => {
+    if (!searchParams.get("suppressed")) setShowSuppressed(settings.showSuppressed);
+  }, [settings.showSuppressed]);
+
+  useEffect(() => {
     setPage(1);
   }, [query, priorityFilter, filters, showSuppressed, sort, groupBy]);
 

@@ -601,6 +601,7 @@ export function analyzeCausality(input: CausalityInput): CausalityResult {
   incidents.sort((a, b) => {
     const priorityDiff = priorityRank(a.priority) - priorityRank(b.priority);
     if (priorityDiff !== 0) return priorityDiff;
+    if (a.alertUids.length !== b.alertUids.length) return b.alertUids.length - a.alertUids.length;
     if (a.confidence !== b.confidence) return b.confidence - a.confidence;
     return a.detectedAt - b.detectedAt;
   });
