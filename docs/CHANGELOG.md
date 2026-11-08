@@ -48,3 +48,4 @@ Alle Liefer­schritte werden als eigener Git-Commit festgehalten.
 6. `fix: prioritize high-impact incidents, clarify signal reduction and sync suppression preference`
 7. `test: add live API normalization coverage`
 8. `docs: add QA matrix, screenshots, final README and delivery changelog`
+9. `docs: record final delivery commits in changelog`
