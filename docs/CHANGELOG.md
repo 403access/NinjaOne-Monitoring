@@ -45,3 +45,6 @@ Alle Liefer­schritte werden als eigener Git-Commit festgehalten.
 3. `feat(core): add domain model, realistic demo tenant, priority engine and causal suppression engine`
 4. `feat(server): add NinjaOne OAuth client, normalization, SQLite store and REST API`
 5. `feat(ui): add responsive operations console with dashboard, conditions, alerts, causality, tasks, devices and settings`
+6. `fix: prioritize high-impact incidents, clarify signal reduction and sync suppression preference`
+7. `test: add live API normalization coverage`
+8. `docs: add QA matrix, screenshots, final README and delivery changelog`
